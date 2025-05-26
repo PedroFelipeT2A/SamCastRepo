@@ -1,0 +1,81 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-fast-forward"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Dados de Conexão </b>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                        <span class="title-text"> <b> AO VIVO </b> </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Servidor FMS </div>
+                        <div class="col-9"> @servidorFms <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Stream </div>
+                        <div class="col-9"> @stream  <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a>  </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Bitrate </div>
+                        <div class="col-9"> @streaming.bitrate Kbps (video + audio) </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Usuário/Login </div>
+                        <div class="col-9"> @streaming.login <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Senha </div>
+                        <div class="col-9"> @streaming.senha <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Profile FMLE </div>
+                        <div class="col-9"> <a href="/dados-conexao/FMLE" class="badge-secondary"> download </a> </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <span class="title-text"> <b> FTP </b> </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Servidor /Server / Host </div>
+                        <div class="col-9"> @servidorFtp <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a> </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Usuário / Login </div>
+                        <div class="col-9"> @streaming.login   <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a>  </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Senha </div>
+                        <div class="col-9"> @streaming.senha  </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Porta </div>
+                        <div class="col-9"> 21 <a href="#" title="copiar" class="badge-primary"> <span class="fa fa-copy"></span> </a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

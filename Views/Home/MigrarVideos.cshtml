@@ -1,0 +1,53 @@
+﻿@model Painel.Models.MigracaoFtpModel
+@{
+    ViewData["Title"] = "Migrar Vídeos via FTP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-arrow-right-left fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>Migrar Vídeos via FTP</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    @if (TempData["StatusAcao"] != null)
+                    {
+                        <div class="alert alert-info">
+                            @TempData["StatusAcao"]
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="ipFtpRemoto">IP do FTP</label>
+                            <input type="text" class="form-control" id="ipFtpRemoto" name="FtpMigrationModel.IpFtpRemoto" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="usuarioFtpRemoto">Usuário</label>
+                            <input type="text" class="form-control" id="usuarioFtpRemoto" name="FtpMigrationModel.UsuarioFtpRemoto" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senhaFtpRemoto">Senha</label>
+                            <input type="password" class="form-control" id="senhaFtpRemoto" name="FtpMigrationModel.SenhaFtpRemoto" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mt-3">Migrar Vídeos</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

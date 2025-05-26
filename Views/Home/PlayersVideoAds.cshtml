@@ -1,0 +1,198 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-play"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Players </b>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-12">                        
+                        <select name="players" class="form-select" id="players" style="width:98%;" onchange="ManagePlayer(this.value);">
+                            <option value="">Escolha outro Player para Gerenciar </option>
+                            <option value="html5">Flash &amp; HTML5 Responsivo(NOVO)</option>
+                            <option value="link-celulares">Link Celulares</option>
+                            <option value="android">App Android</option>
+                            <option value="video-chat">Video Responsivo com Chat</option>
+                            <option value="video-ads">Video Ads(anúncios)</option>
+                            <option value="m3u8">Player Próprio / Link M3U8</option>
+                        </select>                        
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12" style="text-align:center">
+                            <h5><b> Vídeo com Chat </b></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!-- -->
+
+                            <table class="table table-responsive"  width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="dynamic-tab-pane-control tab-pane" id="tabPane1">
+                                                <div class="tab-page" id="tabPage1">
+                                                    <h5 style="text-align:center"> PLAYER </h5>
+                                                    <form action="/gerenciar-player-video-ads" method="post">
+                                                        <table class="table table-responsive"  >
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="150" height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Largura</td>
+                                                                    <td width="720" align="left"><input  class="form-control" type="number" name="largura" style="width:300px" value="640"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Altura</td>
+                                                                    <td align="left"><input  class="form-control" type="number" name="altura" style="width:300px" value="480"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">URL Capa/Poster</td>
+                                                                    <td align="left" class="texto_padrao_pequeno"><input  class="form-control" type="text" name="capa" style="width:300px" value="http://">&nbsp;<i class="fa fa-globe" onclick="alert('(mesma largura X altura do player)');" style="cursor:pointer"></i></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Aspect Ratio</td>
+                                                                    <td align="left">
+                                                                        <select class="form-select" name="aspectratio" style="width:305px;">
+                                                                            <option value="16:9" selected="selected">Wide Screen 16:9</option>
+                                                                            <option value="4:3">Default 4:3</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Auto Play</td>
+                                                                    <td align="left">
+                                                                        <input class="form-check-inline" name="autoplay" type="checkbox" value="true" style="vertical-align:middle">
+                                                                        &nbsp;Sim
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Responsivo</td>
+                                                                    <td align="left">
+                                                                        <input  class="form-check-inline" name="responsivo" type="checkbox" value="true" style="vertical-align:middle">&nbsp;Sim&nbsp;<img src="img/icones/ajuda.gif" title="Ajuda sobre este item." width="16" height="16" onclick="alert('Ajustar player a qualquer resolução e dispositivo.');" style="cursor:pointer">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Iniciar Mudo</td>
+                                                                    <td align="left">
+                                                                        <input  class="form-check-inline" name="mute" type="checkbox" value="true" style="vertical-align:middle">&nbsp;Sim&nbsp;<img src="img/icones/ajuda.gif" title="Ajuda sobre este item." width="16" height="16" onclick="alert('Iniciar o vídeo sem o áudio.');" style="cursor:pointer">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Exibir Contador</td>
+                                                                    <td align="left">
+                                                                        <input  class="form-check-inline" name="contador" type="checkbox" value="sim" style="vertical-align:middle">
+                                                                        &nbsp;Sim
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Exibir Compartilhamento</td>
+                                                                    <td align="left">
+                                                                        <input  class="form-check-inline" name="share" type="checkbox" value="sim" style="vertical-align:middle">
+                                                                        &nbsp;Sim
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" align="left"><input  class="btn btn-primary" style="width:100%" type="submit" value="OK"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-page" id="tabPage1" >
+                                                    <h5> Cadastrar Anúncio </h5>
+                                                    <form action="/gerenciar-player-video-ads" method="post">
+                                                        <table class="table table-responsive"  >
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="150" height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Video</td>
+                                                                    <td width="720" align="left">
+                                                                        <select name="video" class="form-select" id="video" style="width:255px;">
+                                                                            <option selected="selected">Selecione um</option>
+                                                                            <optgroup label="/ (root)"><option value="video1.mp4">[00:03:18] video1.mp4 (854x480 @@ 627 Kbps)</option><option value="video2.mp4">[00:03:38] video2.mp4 (862x480 @@ 568 Kbps)</option></optgroup>
+                                                                            <optgroup label="record"><option value="record/rec_2024-11-18_13-51-56.mp4_0.mp4">[00:00:39] rec_2024-11-18_13-51-56.mp4_0.mp4 (862x480 @@ 620 Kbps)</option><option value="record/rec_2024-11-18_13-53-02.mp4_0.mp4">[00:00:27] rec_2024-11-18_13-53-02.mp4_0.mp4 (862x480 @@ 640 Kbps)</option></optgroup>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Exibir  após</td>
+                                                                    <td align="left" class="texto_padrao_pequeno" style="display:flex" >
+                                                                        <input  class="form-control" type="text" name="tempo" style="width:50px" value="5" id="tempo">
+                                                                        &nbsp;segundos.
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2" align="left"><input class="btn btn-primary" style="width:100%" type="submit" value="OK"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-page" id="tabPage1">
+                                                    <h5> Anúncios </h5>
+                                                    <table class="table table-responsive" style="font-size:2vh; background:#ffd800">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="30" height="25" align="center" scope="col"><img src="/img/icones/atencao.png" width="16" height="16"></td>
+                                                                <td width="840" align="left" class="texto_pequeno_erro" scope="col">Os anúncios são exibidos de forma aleatória. Quando o espectador abre o player um video é selecionado aleatóriamente.</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="table table-responsive table-bordered">
+                                                        <thead>
+                                                            <tr style="cursor:pointer">
+                                                                <td width="500" height="23" align="left" class="texto_padrao_destaque">&nbsp;Video</td>
+                                                                <td width="150" height="23" align="left" class="texto_padrao_destaque">&nbsp;Data Cadastro</td>
+                                                                <td width="120" height="23" align="left" class="texto_padrao_destaque">&nbsp;Exibições</td>
+                                                                <td width="100" height="23" align="left" class="texto_padrao_destaque">&nbsp;Ações</td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+    function ManagePlayer(player) {
+        if (player == 'html5') { window.location.href = '/Home/PlayersHTML5'; }
+        if (player == 'link-celulares') { window.location.href = '/Home/PlayersLinkCelulares'; }
+        if (player == 'android') { window.location.href = '/Home/PlayersAndroid'; }
+        if (player == 'video-chat') { window.location.href = '/Home/PlayersVideoChat'; }
+        if (player == 'video-ads') { window.location.href = '/Home/PlayersVideoAds'; }
+        if (player == 'm3u8') { window.location.href = '/Home/PlayersM3u8'; }
+    }
+</script>

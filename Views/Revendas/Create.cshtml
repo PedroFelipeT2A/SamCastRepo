@@ -1,0 +1,113 @@
+﻿@model Painel.Models.revendas
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>revendas</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="codigo_revenda" class="control-label"></label>
+                <input asp-for="codigo_revenda" class="form-control" />
+                <span asp-validation-for="codigo_revenda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nome" class="control-label"></label>
+                <input asp-for="nome" class="form-control" />
+                <span asp-validation-for="nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="senha" class="control-label"></label>
+                <input asp-for="senha" class="form-control" />
+                <span asp-validation-for="senha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="streamings" class="control-label"></label>
+                <input asp-for="streamings" class="form-control" />
+                <span asp-validation-for="streamings" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="espectadores" class="control-label"></label>
+                <input asp-for="espectadores" class="form-control" />
+                <span asp-validation-for="espectadores" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bitrate" class="control-label"></label>
+                <input asp-for="bitrate" class="form-control" />
+                <span asp-validation-for="bitrate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="espaco" class="control-label"></label>
+                <input asp-for="espaco" class="form-control" />
+                <span asp-validation-for="espaco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="subrevendas" class="control-label"></label>
+                <input asp-for="subrevendas" class="form-control" />
+                <span asp-validation-for="subrevendas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="chave_api" class="control-label"></label>
+                <input asp-for="chave_api" class="form-control" />
+                <span asp-validation-for="chave_api" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="url_suporte" class="control-label"></label>
+                <input asp-for="url_suporte" class="form-control" />
+                <span asp-validation-for="url_suporte" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="data_cadastro" class="control-label"></label>
+                <input asp-for="data_cadastro" class="form-control" />
+                <span asp-validation-for="data_cadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dominio_padrao" class="control-label"></label>
+                <input asp-for="dominio_padrao" class="form-control" />
+                <span asp-validation-for="dominio_padrao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ultimo_acesso_data" class="control-label"></label>
+                <input asp-for="ultimo_acesso_data" class="form-control" />
+                <span asp-validation-for="ultimo_acesso_data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="api_token" class="control-label"></label>
+                <input asp-for="api_token" class="form-control" />
+                <span asp-validation-for="api_token" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="refresh_token" class="control-label"></label>
+                <input asp-for="refresh_token" class="form-control" />
+                <span asp-validation-for="refresh_token" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

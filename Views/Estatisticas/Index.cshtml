@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Painel.Models.espectadores_conectados>
+<style>
+    #quadro-topo{
+        text-align:center;
+        background: #dfdfdf;
+    }
+</style>
+<div class="row ">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div style="height:6vh; padding-right:2vh">
+                    <div style="float:left">
+                        <i class="ki-duotone ki-graph-up fs-2x text-primary"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span></i>
+                    </div>
+                    <div style="float: right; font-size: 3vh; color: #ff940a">
+                        <b> Estatísticas do Streaming </b>
+                    </div>
+                </div>
+                <hr>
+
+                <table class="table table-responsive table-bordered">
+                    <tbody>
+                        <tr>
+                            <td width="140" height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Estatística</td>
+                            <td width="435" align="left">
+                                <select name="estatistica" class="form-select" id="estatistica" style="width:255px;" onchange="tipo_estatistica(this.value);">
+                                    <option value="1">Espectadores</option>
+                                    <option value="2">Tempo Médio de Conexão dos Espectadores</option>
+                                    <option value="3">Países</option>
+                                    <option value="4">Players</option>
+                                    <option value="5">Horário com mais Espectadores</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left">
+                                <table class="table table-responsive">
+                                    <tbody>
+                                        <tr>
+                                            <td width="140" height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Periodo</td>
+                                            <td width="405" align="left" class="form-inline">
+                                                <select name="mes" class="form-select" id="mes" style="width:162px;">
+                                                    <option value="01">Janeiro</option>
+                                                    <option value="02">Fevereiro</option>
+                                                    <option value="03" selected="selected">Março</option>
+                                                    <option value="04">Abril</option>
+                                                    <option value="05">Maio</option>
+                                                    <option value="06">Junho</option>
+                                                    <option value="07">Julho</option>
+                                                    <option value="08">Agosto</option>
+                                                    <option value="09">Setembro</option>
+                                                    <option value="10">Outubro</option>
+                                                    <option value="11">Novembro</option>
+                                                    <option value="12">Dezembro</option>
+                                                </select>
+                                                <select name="ano" class="form-select" id="ano" style="width:90px;">
+                                                    <option value="2024">2024</option>
+                                                    <option value="2025" selected="selected">2025</option>
+                                                    <option value="2026">2026</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="left">
+                                <a href="/Estatisticas/Visualizar/5/2025" class="btn btn-primary" style="width:100%"> Visualizar </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,41 @@
+﻿@model Painel.Models.RelayConfigViewModel
+
+@{
+    ViewData["Title"] = "Configurações do Relay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>Configurações do Relay</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="mb-3">
+                        <h5>Informações do Relay</h5>
+                        <div><strong>Status:</strong> @(Model.RelayStatus == "sim" ? "Ativado" : "Desativado")</div>
+                        <div><strong>URL do Relay:</strong> @Model.RelayUrl</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-warning" onclick="location.href='@Url.Action("EditarRelay", "Home")'">
+                            <i class="fa fa-edit"></i> Editar Configurações
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

@@ -1,0 +1,215 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-play"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Players </b>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-12">                        
+                        <select name="players" class="form-select" id="players" style="width:98%;" onchange="ManagePlayer(this.value);">
+                            <option value="">Escolha outro Player para Gerenciar </option>
+                            <option value="html5">Flash &amp; HTML5 Responsivo(NOVO)</option>
+                            <option value="link-celulares">Link Celulares</option>
+                            <option value="android">App Android</option>
+                            <option value="video-chat">Video Responsivo com Chat</option>
+                            <option value="video-ads">Video Ads(anúncios)</option>
+                            <option value="m3u8">Player Próprio / Link M3U8</option>
+                        </select>                        
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12" style="text-align:center">
+                            <h5><b> App Android </b></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!-- -->
+
+                            <form action="/app/criar-app-video.php" method="post" name="form" enctype="multipart/form-data">
+                                <table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div id="quadro">
+                                                    <div id="quadro-topo"> <strong>Instruções</strong></div>
+                                                    <div class="texto_medio" id="quadro-conteudo">
+                                                        <table class="table table-responsive" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="100%" height="40" align="left">
+                                                                        <small>
+                                                                            -Siga as instruções abaixo de cada campo para evitar erros na criação e layout do seu app.<br>
+                                                                            -A logomarca e o ícone devem ter fundo transparênte e ser uma imagem PNG.<br>
+                                                                            -Não use medidas menores ou maiores do que as específicadas abaixo de cada campo.<br>
+                                                                            -Se não tiver facebook, deixe este campo totalmente em branco que será usado a URL do site no lugar deles.<br>
+                                                                            -O App será criado e disponibilizado para download no mesmo instante da solicitação caso não haja nenhum erro.
+                                                                        </small>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div >
+                                                    <div >
+                                                        <strong></strong>
+
+                                                        <input class="form-control"name="enviar" type="hidden" id="enviar" value="sim">
+                                                    </div>
+                                                    <div class="texto_medio" id="quadro-conteudo">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="20%" height="50" class="texto_padrao_destaque">Nome</td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="webtv_nome" type="text" id="webtv_nome" value="" placeholder="(Máximo 30 caracteres, regra do Google Play)">                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%" height="50" class="texto_padrao_destaque">FaceBook</td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="webtv_facebook" type="text" id="webtv_facebook" value="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%" height="50" class="texto_padrao_destaque">Twitter</td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="webtv_twitter" type="text" id="webtv_twitter" value="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%" height="50" class="texto_padrao_destaque">Site&nbsp;<span class="label label-verde">Novo</span></td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="webtv_site" type="text" id="webtv_site" value="">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="20%" height="100" class="texto_padrao_destaque">Descrição</td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <label>
+                                                                            <textarea class="form-control" name="webtv_descricao" id="webtv_descricao" style="width:100%" rows="5"></textarea>
+                                                                        </label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="50" class="texto_padrao_destaque">Versão</td>
+                                                                    <td class="texto_padrao_pequeno">
+                                                                        <select class="form-select" name="versao" id="versao">
+                                                                            <option value="1.0" selected="selected">1.0</option>
+                                                                            <option value="1.1">1.1</option>
+                                                                            <option value="1.2">1.2</option>
+                                                                            <option value="1.3">1.3</option>
+                                                                            <option value="1.4">1.4</option>
+                                                                            <option value="1.5">1.5</option>
+                                                                            <option value="1.6">1.6</option>
+                                                                            <option value="1.7">1.7</option>
+                                                                            <option value="1.8">1.8</option>
+                                                                            <option value="1.9">1.9</option>
+                                                                            <option value="1.10">1.10</option>
+                                                                            <option value="1.11">1.11</option>
+                                                                            <option value="1.12">1.12</option>
+                                                                            <option value="1.13">1.13</option>
+                                                                            <option value="1.14">1.14</option>
+                                                                            <option value="1.15">1.15</option>
+                                                                            <option value="1.16">1.16</option>
+                                                                            <option value="1.17">1.17</option>
+                                                                            <option value="1.18">1.18</option>
+                                                                            <option value="1.19">1.19</option>
+                                                                            <option value="1.20">1.20</option>
+                                                                        </select>
+                                                                        <br>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div id="quadro">
+                                                    <div id="quadro-topo"> <strong>Personalização do App</strong></div>
+                                                    <div class="texto_medio" id="quadro-conteudo">
+                                                        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="20%" height="50" class="texto_padrao_destaque">Logomarga</td>
+                                                                    <td width="80%" class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="logo" type="file" id="logo" placeholder="PNG / 500x500">                                                                        
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="50" class="texto_padrao_destaque">Ícone</td>
+                                                                    <td class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="icone" type="file" id="icone">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="50" class="texto_padrao_destaque">Background</td>
+                                                                    <td class="texto_padrao_pequeno">
+                                                                        <input class="form-control"name="fundo" type="file" id="fundo">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="50" class="texto_padrao_destaque">Tema</td>
+                                                                    <td class="texto_padrao_pequeno">
+                                                                        <select class="form-select" name="tema" id="tema">
+                                                                            <option value="#0099CC|#003399" selected="selected">Azul/Blue</option>
+                                                                            <option value="#00796B|#00695C">Verde/Green</option>
+                                                                            <option value="#FF6699|#FF3366">Rosa/Pink</option>
+                                                                            <option value="#FF5959|#FF0000">Vermelho/Red</option>
+                                                                        </select>
+                                                                        <input class="form-control"name="servidor" type="hidden" value="stmv1.udicast.com"><input class="form-control"name="login" type="hidden" value="wcore"><input class="form-control"name="idioma_painel" type="hidden" value="pt-br">
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <center><input class="btn btn-primary" style="width:100%" name="button" type="submit" id="button" value="Solicitar App" onclick="abrir_log_sistema();"></center>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <!-- -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+    function ManagePlayer(player) {
+        if (player == 'html5') { window.location.href = '/Home/PlayersHTML5'; }
+        if (player == 'link-celulares') { window.location.href = '/Home/PlayersLinkCelulares'; }
+        if (player == 'android') { window.location.href = '/Home/PlayersAndroid'; }
+        if (player == 'video-chat') { window.location.href = '/Home/PlayersVideoChat'; }
+        if (player == 'video-ads') { window.location.href = '/Home/PlayersVideoAds'; }
+        if (player == 'm3u8') { window.location.href = '/Home/PlayersM3u8'; }
+    }
+</script>

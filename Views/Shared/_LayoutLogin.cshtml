@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<!--begin::Head-->
+<head>
+    <title> samcast by samhost </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <!--begin::Fonts(mandatory for all pages)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+    <style>
+        body {
+            font-family: Poppins !important;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/css/dx.softblue.compact.css" />
+    <script src="/js/dx.all.js"></script>
+    <script>
+        var SPMaskBehavior = function (val) { return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009'; };
+        var spOptions = { onKeyPress: function (val, e, field, options) { field.mask(SPMaskBehavior.apply({}, arguments), options); } };
+        function mostrarWait() { $('.spinner-bg').css('display', 'block'); }
+        function fecharWait() { $('.spinner-bg').css('display', 'none'); }
+        function DisplayProgressMessage(ctl, msg) {
+            if ($('form')[0].checkValidity() == true) {
+                $(ctl).empty();
+                $(ctl).append(msg);
+                $(ctl).attr('disabled', true);
+                $(ctl).css('opacity', '0.5');
+                $('.spinner-bg').css('display', 'grid');
+                $('form')[0].submit();
+            } return true;
+        }
+
+        function msgAviso(mensagem) {
+            window.setTimeout(function () {
+                DevExpress.ui.notify({ message: mensagem, width: 300, shading: true, position: "center" }, 'success', 5000);
+            }, 400);
+        }
+
+        function msgErro(mensagem) {
+            window.setTimeout(function () {
+                DevExpress.ui.notify({ message: mensagem, width: 300, shading: true, position: "center" }, 'error', 5000);
+            }, 400);
+        }
+
+        const formatDate = new Intl.DateTimeFormat('pt-BR').format;
+        const formatCurrency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format;
+        const formatNumber = new Intl.NumberFormat('pt-BR', { style: 'decimal', currency: 'BRL', minimumFractionDigits: 2 }).format;
+        DevExpress.localization.locale(navigator.language);
+        DevExpress.config({ defaultCurrency: 'BRL', thousandSeparator: '.', fixedPoint: 2 });
+
+    </script>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="auth-bg">
+    <!--end::Theme mode setup on page load-->
+    <!--begin::Main-->
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root">
+
+        <!--begin::Authentication - Sign-in -->
+        <div class="d-flex flex-column flex-lg-row flex-column-fluid">
+            <!--begin::Body-->
+            <div class="d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1">
+                <!--begin::Form-->
+                <div class="d-flex flex-center flex-column flex-lg-row-fluid">
+                    <!--begin::Wrapper-->
+                    <div class="w-lg-500px p-10">
+
+                        @RenderBody()
+
+                    </div>
+                    <!--end::Wrapper-->
+                </div>
+                <!--end::Form-->
+                
+            </div>
+            <!--end::Body-->
+            <!--begin::Aside-->
+            <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2" style="background-image: url(/assets/media/misc/pattern-2.png)">
+                <!--begin::Content-->
+                <div class="d-flex flex-column flex-center py-7 py-lg-15 px-5 px-md-15 w-100">
+                    <!--begin::Logo-->
+                    <a href="/index.html" class="mb-0 mb-lg-12">
+                        <img alt="Logo" src="/assets/media/logos/custom-1.png" class="h-60px h-lg-75px" />
+                    </a>
+                    <!--end::Logo-->
+                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bolder text-center mb-7">
+                        Streaming Web Radio e TV de alta performance.
+                    </h1>
+                    <!--end::Title-->
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Aside-->
+        </div>
+        <!--end::Authentication - Sign-in-->
+
+
+
+    </div>
+    <!--end::Root-->
+    <!--end::Main-->
+    <!--begin::Javascript-->
+    <script>
+        var hostUrl = "/assets/";</script>
+
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+
+</body>
+<!--end::Body-->
+</html>
+@{
+    string msgAviso = Context.Session.GetString("msgaviso");
+
+    if (msgAviso != null)
+    {
+        <script>
+            msgAviso('@Html.Raw(msgAviso)');
+        </script>
+        Context.Session.Remove("msgaviso");
+    }
+
+    string msgErro = Context.Session.GetString("msgerro");
+
+    if (msgErro != null)
+    {
+        <script>
+            msgErro('@Html.Raw(msgErro)');
+        </script>
+        Context.Session.Remove("msgerro");
+    }
+}

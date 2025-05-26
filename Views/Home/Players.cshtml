@@ -1,0 +1,54 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-play"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Players </b>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="col-12">                        
+                        <select name="players" class="form-control" id="players" style="width:98%;" onchange="ManagePlayer(this.value);">
+                            <option value="">Escolha um Player para Gerenciar </option>
+                            <option value="html5">Flash &amp; HTML5 Responsivo(NOVO)</option>
+                            <option value="link-celulares">Link Celulares</option>
+                            <option value="android">App Android</option>
+                            <option value="video-chat">Video Responsivo com Chat</option>
+                            <option value="video-ads">Video Ads(anúncios)</option>
+                            <option value="m3u8">Player Próprio / Link M3U8</option>
+                        </select>                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+    function ManagePlayer(player) {
+        if (player == 'html5') { window.location.href = '/Home/PlayersHTML5'; }
+        if (player == 'link-celulares') { window.location.href = '/Home/PlayersLinkCelulares'; }
+        if (player == 'android') { window.location.href = '/Home/PlayersAndroid'; }
+        if (player == 'video-chat') { window.location.href = '/Home/PlayersVideoChat'; }
+        if (player == 'video-ads') { window.location.href = '/Home/PlayersVideoAds'; }
+        if (player == 'm3u8') { window.location.href = '/Home/PlayersM3u8'; }
+    }
+</script>

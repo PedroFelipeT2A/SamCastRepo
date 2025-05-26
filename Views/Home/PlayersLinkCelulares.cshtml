@@ -1,0 +1,97 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-play"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Players </b>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-12">                        
+                        <select name="players" class="form-select" id="players" style="width:98%;" onchange="ManagePlayer(this.value);">
+                            <option value="">Escolha outro Player para Gerenciar </option>
+                            <option value="html5">Flash &amp; HTML5 Responsivo(NOVO)</option>
+                            <option value="link-celulares">Link Celulares</option>
+                            <option value="android">App Android</option>
+                            <option value="video-chat">Video Responsivo com Chat</option>
+                            <option value="video-ads">Video Ads(anúncios)</option>
+                            <option value="m3u8">Player Próprio / Link M3U8</option>
+                        </select>                        
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12" style="text-align:center">
+                            <h5><b> Links para Celulares </b></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <table width="870" border="0" cellspacing="0" cellpadding="0" align="center">
+                                <tbody>
+                                    <tr>
+                                        <td width="290" align="center" valign="top" class="texto_padrao">
+                                            <a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8">ANDROID </a><br>
+                                            <br>
+                                            <textarea readonly="readonly" style="width:280px; height:100px;font-size:11px" onmouseover="this.select()">&lt;a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8"&gt;&lt;img src="http://playerv.udicast.com/img/icones/img-icone-player-android.png" width="32" height="32" /&gt;&lt;/a&gt;</textarea>
+                                            <br>
+                                        </td>
+                                        <td width="290" align="center" class="texto_padrao">
+                                            <a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8">BLACKBERRY </a><br>
+                                            <br>
+                                            <textarea readonly="readonly" style="width:280px; height:100px;font-size:11px" onmouseover="this.select()">&lt;a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8"&gt;&lt;img src="http://playerv.udicast.com/img/icones/img-icone-player-blackberry.png" width="32" height="32" /&gt;&lt;/a&gt;</textarea>
+                                            <br>
+                                        </td>
+                                        <td width="290" align="center" valign="top" class="texto_padrao">
+                                            <a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8"> iPHONE </a><br>
+                                            <br>
+                                            <textarea readonly="readonly" style="width:280px; height:100px;font-size:11px" onmouseover="this.select()">&lt;a href="https://stmv1.udicast.com/wcore/wcore/playlist.m3u8"&gt;&lt;img src="http://playerv.udicast.com/img/icones/img-icone-player-iphone.png" width="32" height="32" /&gt;&lt;/a&gt;</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"><img src="http://playerv.udicast.com/img/icones/img-icone-player-android.png" width="32" height="32" /></td>
+                                        <td align="center"><img src="http://playerv.udicast.com/img/icones/img-icone-player-blackberry.png" width="32" height="32" /></td>
+                                        <td align="center"><img src="http://playerv.udicast.com/img/icones/img-icone-player-iphone.png" width="32" height="32" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"><textarea readonly="readonly" style="width:280px; height:50px;font-size:11px" onmouseover="this.select()">&lt;img src="http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl=https://stmv1.udicast.com/wcore/wcore/playlist.m3u8" title="Android" /&gt;</textarea></td>
+                                        <td align="center"><textarea readonly="readonly" style="width:280px; height:50px;font-size:11px" onmouseover="this.select()">&lt;img src="http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl=https://stmv1.udicast.com/wcore/wcore/playlist.m3u8" title="BlackBerry" /&gt;</textarea></td>
+                                        <td align="center"><textarea readonly="readonly" style="width:280px; height:50px;font-size:11px" onmouseover="this.select()">&lt;img src="http://chart.apis.google.com/chart?cht=qr&amp;chs=100x100&amp;chl=https://stmv1.udicast.com/wcore/wcore/playlist.m3u8" title="IOS" /&gt;</textarea></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+    function ManagePlayer(player) {
+        if (player == 'html5') { window.location.href = '/Home/PlayersHTML5'; }
+        if (player == 'link-celulares') { window.location.href = '/Home/PlayersLinkCelulares'; }
+        if (player == 'android') { window.location.href = '/Home/PlayersAndroid'; }
+        if (player == 'video-chat') { window.location.href = '/Home/PlayersVideoChat'; }
+        if (player == 'video-ads') { window.location.href = '/Home/PlayersVideoAds'; }
+        if (player == 'm3u8') { window.location.href = '/Home/PlayersM3u8'; }
+    }
+</script>

@@ -1,0 +1,189 @@
+﻿@model Painel.Models.revendas
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>revendas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.codigo_revenda)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.codigo_revenda)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.senha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.senha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.streamings)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.streamings)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.espectadores)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.espectadores)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.bitrate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.bitrate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.espaco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.espaco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.subrevendas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.subrevendas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.chave_api)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.chave_api)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url_suporte)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.url_suporte)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.data_cadastro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.data_cadastro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.dominio_padrao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.dominio_padrao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stm_exibir_tutoriais)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stm_exibir_tutoriais)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url_tutoriais)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.url_tutoriais)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stm_exibir_downloads)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stm_exibir_downloads)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stm_exibir_mini_site)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stm_exibir_mini_site)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stm_exibir_app_android_painel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stm_exibir_app_android_painel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.idioma_painel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.idioma_painel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tipo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tipo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ultimo_acesso_data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ultimo_acesso_data)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ultimo_acesso_ip)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ultimo_acesso_ip)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stm_exibir_app_android)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stm_exibir_app_android)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.srt_status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.srt_status)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.api_token)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.api_token)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.refresh_token)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.refresh_token)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="codigo" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

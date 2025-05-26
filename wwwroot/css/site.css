@@ -1,0 +1,27 @@
+.container-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge-primary {
+    background: #0056cf;
+    border-radius: 1vh;
+    font-size: 1.5vh;
+    padding-left: 0.8vh;
+    color: #fff;
+    padding-right: 0.8vh;
+}
+
+.badge-secondary{
+    background: #ff6a00;
+    border-radius: 1vh;
+    font-size: 1.5vh;
+    padding-left: 0.8vh;
+    color: #fff;
+    padding-right: 0.8vh;
+}
+
+.title-text {
+    color: #ff6a00
+}

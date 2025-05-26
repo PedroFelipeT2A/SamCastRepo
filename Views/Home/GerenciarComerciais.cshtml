@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Gerenciar Comerciais";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 2rem; color: #ff940a">
+                            <strong>Gerenciamento de Comerciais</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <form method="post" asp-action="GerenciarComerciais">
+                        <div class="row">
+                            <!-- Playlist Selecionada -->
+                            <div class="col-md-6 mb-3">
+                                <label for="playlistSelect" class="form-label text-muted">Playlist Selecionada</label>
+                                <input type="text" class="form-control border-primary" id="playlistSelect" name="PlaylistSelecionada" value="@Model.PlaylistSelecionada" readonly />
+                            </div>
+
+                            <!-- Pasta de Comerciais -->
+                            <div class="col-md-6 mb-3">
+                                <label for="pastaComerciais" class="form-label text-muted">Pasta de Comerciais</label>
+                                <input type="text" class="form-control border-primary" id="pastaComerciais" name="PastaComerciais" value="@Model.PastaComerciais" readonly />
+                            </div>
+                        </div>
+
+                        <!-- Botão para carregar comerciais -->
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary w-100">Carregar Comerciais</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Exibição de comerciais -->
+                    <div class="row mt-4">
+                        <h3 class="text-secondary">Comerciais Disponíveis</h3>
+                        <div class="list-group">
+                            @foreach (var comercial in Model.Comerciais)
+                            {
+                                <div class="list-group-item d-flex justify-content-between align-items-center p-3 border-primary">
+                                    <div>
+                                        <h5 class="mb-1 text-primary">@comercial.Nome</h5>
+                                        <p class="mb-1 text-muted">Bitrate: @comercial.Bitrate</p>
+                                        <p class="mb-0 text-muted">Duração: @comercial.Duração</p>
+                                    </div>
+                                    <img src="@comercial.Thumbnail" alt="Thumb" class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                                </div>
+                            }
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

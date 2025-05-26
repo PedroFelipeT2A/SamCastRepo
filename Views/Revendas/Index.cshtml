@@ -1,0 +1,197 @@
+﻿@model IEnumerable<Painel.Models.revendas>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.codigo_revenda)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.senha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.streamings)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.espectadores)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bitrate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.espaco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.subrevendas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.chave_api)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url_suporte)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.data_cadastro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dominio_padrao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stm_exibir_tutoriais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.url_tutoriais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stm_exibir_downloads)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stm_exibir_mini_site)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stm_exibir_app_android_painel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idioma_painel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ultimo_acesso_data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ultimo_acesso_ip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stm_exibir_app_android)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.srt_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.api_token)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.refresh_token)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo_revenda)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.streamings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.espectadores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bitrate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.espaco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subrevendas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chave_api)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url_suporte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_cadastro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dominio_padrao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stm_exibir_tutoriais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url_tutoriais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stm_exibir_downloads)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stm_exibir_mini_site)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stm_exibir_app_android_painel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idioma_painel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ultimo_acesso_data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ultimo_acesso_ip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stm_exibir_app_android)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.srt_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.api_token)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.refresh_token)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.codigo">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.codigo">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.codigo">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

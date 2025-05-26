@@ -1,0 +1,215 @@
+﻿@model IEnumerable<Painel.Models.espectadores_conectados>
+<style>
+    #quadro-topo{
+        text-align:center;
+        background: #dfdfdf;
+    }
+</style>
+<div class="row ">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div style="height:6vh; padding-right:2vh">
+                    <div style="float:left">
+                        <i class="ki-duotone ki-people fs-2x text-primary"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                    </div>
+                    <div style="float: right; font-size: 3vh; color: #ff940a">
+                        <b> Espectadores Conectados </b>
+                    </div>
+                </div>
+                <hr>
+                <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh; border-radius:2vh; padding: 2vh" class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td height="30" align="left" class="texto_padrao_destaque">
+                                <div id="quadro">
+                                    <div id="quadro-topo">
+                                        <strong>Transmissão Atual</strong>                                        
+                                    </div>
+                                    <div class="texto_medio" id="quadro-conteudo">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="788" border="0" cellspacing="0" cellpadding="0" align="center" id="tabela_info" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="394" height="70" align="center" class="texto_padrao_pequeno"><img src="https://udicast.com/img/icones/img-icone-espectadores.png" width="48" height="48"></td>
+                                                    <td width="394" align="center" class="texto_padrao_pequeno"><img src="https://udicast.com/img/icones/img-icone-agendamento.png" width="48" height="48"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="30" align="center" class="texto_padrao_pequeno"><br>Total Espectadores</td>
+                                                    <td align="center" class="texto_padrao_pequeno">
+                                                        00:00:00<br>
+                                                        Tempo Médio
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td width="395" valign="top">
+                                <div id="quadro">
+                                    <div id="quadro-topo">
+                                        <strong>Países</strong>
+                                    </div>
+                                    <div class="texto_padrao_pequeno" id="quadro-conteudo">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="380" border="0" align="center" cellpadding="0" cellspacing="0" id="tabela_paises" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                </tr>
+                                                <tr></tr>
+                                                <tr><td width="190" height="25" align="left" class="texto_padrao_pequeno" scope="col">&nbsp;<img src="/img/icones/paises/br.png" border="0" width="16" height="11" align="absmiddle">&nbsp;&nbsp;Brazil&nbsp;&nbsp;(1)</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                            <td width="10">&nbsp;</td>
+                            <td width="395" valign="top">
+                                <div id="quadro">
+                                    <div id="quadro-topo"> 
+                                        <strong>Players</strong>
+                                    </div>
+                                    <div class="texto_padrao_pequeno" id="quadro-conteudo">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="380" border="0" align="center" cellpadding="0" cellspacing="0" id="tabela_players" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                </tr>
+                                                <tr></tr>
+                                                <tr><td width="190" height="25" align="left" class="texto_padrao_pequeno" scope="col">&nbsp;<img src="/img/icones/players/HTML5.png" border="0" width="16" height="16" align="absmiddle">&nbsp;&nbsp;HTML5&nbsp;&nbsp;(1)</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td height="30" align="left" class="texto_padrao_destaque">
+                                <div id="quadro">
+                                    <div id="quadro-topo"> 
+                                        <strong>Espectadores Conectados</strong>
+                                    </div>
+                                    <div class="texto_medio" id="quadro-conteudo" style="padding:5vh">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="tabela_espectadores_conectados" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr cursor:pointer">
+                                                                    <td width="170" height="23" align="left" class="texto_padrao_destaque" style="border-bottom:#D5D5D5 1px solid; border-right:#D5D5D5 1px solid;">&nbsp;IP</td>
+                                                                    <td width="375" height="23" align="left" class="texto_padrao_destaque" style="border-bottom:#D5D5D5 1px solid; border-right:#D5D5D5 1px solid;">&nbsp;Localidade</td>
+                                                                    <td width="119" height="23" align="left" class="texto_padrao_destaque" style="border-bottom:#D5D5D5 1px solid; border-right:#D5D5D5 1px solid;">&nbsp;Player</td>
+                                                                    <td width="122" height="23" align="left" class="texto_padrao_destaque" style="border-bottom:#D5D5D5 1px solid;">&nbsp;Tempo Conectado</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td height="23" class="texto_padrao">&nbsp;187.65.96.47</td>
+                                                                    <td height="23" class="texto_padrao">&nbsp;<img src="/img/icones/paises/br.png" border="0" align="absmiddle">&nbsp;Brazil - Maceió - Alagoas</td>
+                                                                    <td height="23" class="texto_padrao">&nbsp;<img src="/img/icones/players/HTML5.png" border="0" width="16" height="16" align="absmiddle">&nbsp;HTML5</td>
+                                                                    <td height="23" class="texto_padrao">&nbsp;00:00:01</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td height="30" align="left" class="texto_padrao_destaque">
+                                <div id="quadro">
+                                    <div id="quadro-topo">
+                                        <strong>Mapa de Espectadores</strong>                                        
+                                    </div>
+                                    <div class="texto_medio" id="quadro-conteudo">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="100%" border="0" cellspacing="0" cellpadding="0" align="center" id="tabela_mapa_espectadores_conectados" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="padding: 10vh; overflow:hidden">
+                                                        <div id="mapa_espectadores" style="width: 100%; height: 300px; margin: 0px auto; position: relative;" class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0">
+                                                            <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
+                                                                <div class="leaflet-pane leaflet-tile-pane">
+                                                                    <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+                                                                        <div class="leaflet-tile-container leaflet-zoom-animated" style="z-index: 19; transform: translate3d(0px, 0px, 0px) scale(1);"><img alt="" src="https://tile.openstreetmap.org/2/1/1.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(139px, -56px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/2/1.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(395px, -56px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/1/2.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(139px, 200px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/2/2.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(395px, 200px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/0/1.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-117px, -56px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/3/1.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(651px, -56px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/0/2.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(-117px, 200px, 0px); opacity: 1;"><img alt="" src="https://tile.openstreetmap.org/2/3/2.png" class="leaflet-tile leaflet-tile-loaded" style="width: 256px; height: 256px; transform: translate3d(651px, 200px, 0px); opacity: 1;"></div></div></div><div class="leaflet-pane leaflet-overlay-pane"></div><div class="leaflet-pane leaflet-shadow-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-shadow.png" class="leaflet-marker-shadow leaflet-zoom-animated" alt="" style="margin-left: -12px; margin-top: -41px; width: 41px; height: 41px; transform: translate3d(293px, 228px, 0px);"></div><div class="leaflet-pane leaflet-marker-pane"><img src="https://unpkg.com/leaflet@1.9.3/dist/images/marker-icon.png" class="leaflet-marker-icon leaflet-zoom-animated leaflet-interactive" alt="Marker" tabindex="0" role="button" style="margin-left: -12px; margin-top: -41px; width: 25px; height: 41px; transform: translate3d(293px, 228px, 0px); z-index: 228;"></div><div class="leaflet-pane leaflet-tooltip-pane"></div><div class="leaflet-pane leaflet-popup-pane"></div><div class="leaflet-proxy leaflet-zoom-animated" style="transform: translate3d(512px, 512px, 0px) scale(2);"></div></div><div class="leaflet-control-container"><div class="leaflet-top leaflet-left"><div class="leaflet-control-zoom leaflet-bar leaflet-control"><a class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button" aria-label="Zoom in" aria-disabled="false"><span aria-hidden="true">+</span></a><a class="leaflet-control-zoom-out" href="#" title="Zoom out" role="button" aria-label="Zoom out" aria-disabled="false"><span aria-hidden="true">−</span></a></div></div><div class="leaflet-top leaflet-right"></div><div class="leaflet-bottom leaflet-left"></div><div class="leaflet-bottom leaflet-right"><div class="leaflet-control-attribution leaflet-control"><a href="https://leafletjs.com" title="A JavaScript library for interactive maps"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" class="leaflet-attribution-flag"><path fill="#4C7BE1" d="M0 0h12v4H0z"></path><path fill="#FFD500" d="M0 4h12v3H0z"></path><path fill="#E0BC00" d="M0 7h12v1H0z"></path></svg> Leaflet</a> <span aria-hidden="true">|</span> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>
+                                                                                                                                                                                                                                                                                         </div></div></div></div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="25" class="texto_padrao_pequeno" align="left">
+                                                        <br/>
+                                                        <div class="row">
+                                                            <div class="col-6">
+                                                                <select class="form-select" style="width:50%;height:40px" onchange="filtrar_mapa(this.value);">
+                                                                    <option hidden="" selected="">Filtrar por País</option>
+                                                                    <option value="0,0,2">Mapa Geral</option>
+                                                                    <option value="-10,-55,4">Brasil (1)</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <select class="form-select" style="width:49%;height:40px" onchange="filtrar_mapa(this.value);">
+                                                                    <option hidden="" selected="" value="0,0,2">Filtrar por Estado</option>
+                                                                    <option value="0,0,2">Mapa Geral</option>
+                                                                    <option value="-9.6658,-35.7353,6">Maceió (1)</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  class="table table-responsive">
+                    <tbody>
+                        <tr>
+                            <td height="30" align="left" class="texto_padrao_destaque">
+                                <div id="quadro">
+                                    <div id="quadro-topo">
+                                        <strong>Gráfico de Espectadores</strong>
+                                        <span><img src="/img/icones/img-icone-olho-64x64.png" width="16" height="16" align="absmiddle" onclick="hide_show('tabela_grafico_espectadores_conectados');" style="cursor:pointer; padding-top:7px;" title="Ocultar/Hide"></span>
+                                    </div>
+                                    <div class="texto_medio" id="quadro-conteudo">
+                                        <table style="background:#dfdfdf; border-radius:2vh; padding: 2vh"  width="788" border="0" cellspacing="0" cellpadding="0" align="center" id="tabela_grafico_espectadores_conectados" style="display:block">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="25" class="texto_padrao_pequeno" align="center">
+                                                        <div id="container" style="width: 780px; height: 350px; margin: 0px auto; overflow: hidden;" data-highcharts-chart="0"><div id="highcharts-nn21a0f-0" dir="ltr" style="position: relative; overflow: hidden; width: 780px; height: 350px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); user-select: none; touch-action: manipulation; outline: none; padding: 0px;" class="highcharts-container "><svg version="1.1" class="highcharts-root" style="font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Helvetica, Arial, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, sans-serif; font-size: 1rem;" xmlns="http://www.w3.org/2000/svg" width="780" height="350" viewBox="0 0 780 350" role="img" aria-label="Espectadores Conectados por Hora"><desc>Created with Highcharts 12.1.2</desc><defs><filter id="highcharts-drop-shadow-0"><feDropShadow dx="1" dy="1" flood-color="#000000" flood-opacity="0.75" stdDeviation="2.5"></feDropShadow></filter><clipPath id="highcharts-nn21a0f-31-"><rect x="0" y="0" width="711" height="129" fill="none"></rect></clipPath></defs><rect fill="#ffffff" class="highcharts-background" filter="none" x="0" y="0" width="780" height="350" rx="0" ry="0"></rect><rect fill="none" class="highcharts-plot-background" x="59" y="68" width="711" height="129" filter="none"></rect><g class="highcharts-grid highcharts-xaxis-grid" data-z-index="1"><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 73.5 68 L 73.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 103.5 68 L 103.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 133.5 68 L 133.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 162.5 68 L 162.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 192.5 68 L 192.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 221.5 68 L 221.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 251.5 68 L 251.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 281.5 68 L 281.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 310.5 68 L 310.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 340.5 68 L 340.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 370.5 68 L 370.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 399.5 68 L 399.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 429.5 68 L 429.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 458.5 68 L 458.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 488.5 68 L 488.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 518.5 68 L 518.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 547.5 68 L 547.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 577.5 68 L 577.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 607.5 68 L 607.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 636.5 68 L 636.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 666.5 68 L 666.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 695.5 68 L 695.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 725.5 68 L 725.5 197" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="0" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 755.5 68 L 755.5 197" opacity="1"></path></g><g class="highcharts-grid highcharts-yaxis-grid" data-z-index="1"><path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 59 197.5 L 770 197.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 59 132.5 L 770 132.5" opacity="1"></path><path fill="none" stroke="#e6e6e6" stroke-width="1" stroke-dasharray="none" data-z-index="1" class="highcharts-grid-line" d="M 59 68.5 L 770 68.5" opacity="1"></path></g><rect fill="none" class="highcharts-plot-border" data-z-index="1" stroke="#cccccc" stroke-width="0" x="59" y="68" width="711" height="129"></rect><g class="highcharts-axis highcharts-xaxis" data-z-index="2"><text x="414.5" data-z-index="7" text-anchor="middle" transform="translate(0,0)" class="highcharts-axis-title" style="color: rgb(102, 102, 102); font-size: 0.8em; fill: rgb(102, 102, 102);" y="287.6677225931985">Este gráfico mostra a hora em que os Espectadores começaram a escutar a rádio.</text><path fill="none" class="highcharts-axis-line" stroke="#333333" stroke-width="1" data-z-index="7" d="M 59 197.5 L 770 197.5"></path></g><g class="highcharts-axis highcharts-yaxis" data-z-index="2"><text x="26" data-z-index="7" text-anchor="middle" transform="translate(0,0) rotate(270 26 132.5)" class="highcharts-axis-title" style="color: rgb(102, 102, 102); font-size: 0.8em; fill: rgb(102, 102, 102);" y="132.5">Total de Espectadores</text><path fill="none" class="highcharts-axis-line" stroke="#333333" stroke-width="0" data-z-index="7" d="M 59 68 L 59 197"></path></g><g class="highcharts-series-group" data-z-index="3" filter="none"><g class="highcharts-series highcharts-series-0 highcharts-area-series highcharts-color-0" data-z-index="0.1" opacity="1" transform="translate(59,68) scale(1 1)" clip-path="url(#highcharts-nn21a0f-31-)"><path fill="#2caffe" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 64.5 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129 L 696.1875 129 L 666.5625 129 L 636.9375 129 L 607.3125 129 L 577.6875 129 L 548.0625 129 L 518.4375 129 L 488.8125 129 L 459.1875 129 L 429.5625 129 L 399.9375 129 L 370.3125 129 L 340.6875 129 L 311.0625 64.5 L 281.4375 129 L 251.8125 129 L 222.1875 129 L 192.5625 129 L 162.9375 129 L 133.3125 129 L 103.6875 129 L 74.0625 129 L 44.4375 129 L 14.8125 129 Z" class="highcharts-area" data-z-index="0" fill-opacity="0.75" style="pointer-events: none;"></path><path fill="none" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 64.5 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129" class="highcharts-graph" data-z-index="1" stroke="#666666" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" filter="none"></path><path fill="none" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 64.5 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129" data-z-index="2" class="highcharts-tracker-line" stroke-linecap="round" stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="21" style="cursor: pointer;"></path></g><g class="highcharts-markers highcharts-series-0 highcharts-area-series highcharts-color-0 highcharts-tracker" data-z-index="0.1" opacity="1" transform="translate(59,68) scale(1 1)" clip-path="none" style="cursor: pointer;"></g><g class="highcharts-series highcharts-series-1 highcharts-area-series highcharts-color-1" data-z-index="0.1" opacity="1" transform="translate(59,68) scale(1 1)" clip-path="url(#highcharts-nn21a0f-31-)"><path fill="#544fc5" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 129 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129 L 696.1875 129 L 666.5625 129 L 636.9375 129 L 607.3125 129 L 577.6875 129 L 548.0625 129 L 518.4375 129 L 488.8125 129 L 459.1875 129 L 429.5625 129 L 399.9375 129 L 370.3125 129 L 340.6875 129 L 311.0625 129 L 281.4375 129 L 251.8125 129 L 222.1875 129 L 192.5625 129 L 162.9375 129 L 133.3125 129 L 103.6875 129 L 74.0625 129 L 44.4375 129 L 14.8125 129 Z" class="highcharts-area" data-z-index="0" fill-opacity="0.75" style="pointer-events: none;"></path><path fill="none" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 129 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129" class="highcharts-graph" data-z-index="1" stroke="#666666" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" filter="none"></path><path fill="none" d="M 14.8125 129 L 44.4375 129 L 74.0625 129 L 103.6875 129 L 133.3125 129 L 162.9375 129 L 192.5625 129 L 222.1875 129 L 251.8125 129 L 281.4375 129 L 311.0625 64.5 L 340.6875 129 L 370.3125 129 L 399.9375 129 L 429.5625 129 L 459.1875 129 L 488.8125 129 L 518.4375 129 L 548.0625 129 L 577.6875 129 L 607.3125 129 L 636.9375 129 L 666.5625 129 L 696.1875 129" data-z-index="2" class="highcharts-tracker-line" stroke-linecap="round" stroke-linejoin="round" stroke="rgba(192,192,192,0.0001)" stroke-width="21" style="cursor: pointer;"></path></g><g class="highcharts-markers highcharts-series-1 highcharts-area-series highcharts-color-1 highcharts-tracker" data-z-index="0.1" opacity="1" transform="translate(59,68) scale(1 1)" clip-path="none" style="cursor: pointer;"></g></g><g class="highcharts-exporting-group" data-z-index="3"><g class="highcharts-no-tooltip highcharts-button highcharts-contextbutton" stroke-linecap="round" style="cursor: pointer;" transform="translate(742,5)"><title>Chart context menu</title><rect fill="#ffffff" class="highcharts-button-box" x="0.5" y="0.5" width="28" height="28" rx="2" ry="2" stroke="none" stroke-width="1"></rect><path fill="#666666" d="M 8 9.5 L 22 9.5 M 8 14.5 L 22 14.5 M 8 19.5 L 22 19.5" class="highcharts-button-symbol" data-z-index="1" stroke="#666666" stroke-width="3"></path><text x="28" data-z-index="1" y="18.5" text-anchor="end" style="color: rgb(51, 51, 51); font-size: 0.8em; font-weight: normal; fill: rgb(51, 51, 51);"></text></g></g><text x="390" class="highcharts-title" data-z-index="4" text-align="center" y="25" text-anchor="middle" transform-origin="167.2109375 22" transform="translate(0,0) scale(1 1)" style="font-size: 1.2em; color: rgb(51, 51, 51); font-weight: bold; fill: rgb(51, 51, 51);">Espectadores Conectados por Hora</text><text x="390" class="highcharts-subtitle" data-z-index="4" text-align="center" y="50" text-anchor="middle" transform-origin="81.29054260253906 15" transform="translate(0,0) scale(1 1)" style="color: rgb(102, 102, 102); font-size: 0.8em; fill: rgb(102, 102, 102);">13/03/2025  - 14/03/2025</text><text x="10" text-anchor="start" class="highcharts-caption" data-z-index="4" style="color: rgb(102, 102, 102); font-size: 0.8em; fill: rgb(102, 102, 102);" text-align="left" y="347" transform-origin="10 15" transform="translate(0,0) scale(1 1)"></text><g class="highcharts-legend highcharts-no-tooltip" data-z-index="7" text-align="center" transform="translate(191,305)"><rect fill="none" class="highcharts-legend-box" rx="0" ry="0" stroke="#999999" stroke-width="0" filter="none" x="0" y="0" width="398" height="30"></rect><g data-z-index="1"><g><g class="highcharts-legend-item highcharts-area-series highcharts-color-0 highcharts-series-0" data-z-index="1" transform="translate(8,3)"><path fill="none" class="highcharts-graph" stroke-width="1" stroke-linecap="round" d="M 0.5 12 L 15.5 12" stroke="#666666"></path><path fill="#2caffe" class="highcharts-area" d="M 0.5 12 L 15.5 12 L 15.5 17 L 0.5 17" fill-opacity="0.75"></path><text x="21" text-anchor="start" data-z-index="2" style="color: rgb(51, 51, 51); cursor: pointer; font-size: 0.8em; text-decoration: none; fill: rgb(51, 51, 51);" y="17">Total de Espectadores Ontem</text></g><g class="highcharts-legend-item highcharts-area-series highcharts-color-1 highcharts-series-1" data-z-index="1" transform="translate(215.109375,3)"><path fill="none" class="highcharts-graph" stroke-width="1" stroke-linecap="round" d="M 0.5 12 L 15.5 12" stroke="#666666"></path><path fill="#544fc5" class="highcharts-area" d="M 0.5 12 L 15.5 12 L 15.5 17 L 0.5 17" fill-opacity="0.75"></path><text x="21" y="17" text-anchor="start" data-z-index="2" style="color: rgb(51, 51, 51); cursor: pointer; font-size: 0.8em; text-decoration: none; fill: rgb(51, 51, 51);">Total de Espectadores Hoje</text></g></g></g></g><g class="highcharts-axis-labels highcharts-xaxis-labels" data-z-index="7"><text x="76.64092712474618" text-anchor="end" transform="translate(0,0) rotate(-45 76.64092712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">00:00-00:59</text><text x="106.26592712474618" text-anchor="end" transform="translate(0,0) rotate(-45 106.26592712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">01:00-01:59</text><text x="135.89092712474618" text-anchor="end" transform="translate(0,0) rotate(-45 135.89092712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">02:00-02:59</text><text x="165.51592712474618" text-anchor="end" transform="translate(0,0) rotate(-45 165.51592712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">03:00-03:59</text><text x="195.14092712474618" text-anchor="end" transform="translate(0,0) rotate(-45 195.14092712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">04:00-04:59</text><text x="224.76592712474618" text-anchor="end" transform="translate(0,0) rotate(-45 224.76592712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">05:00-05:59</text><text x="254.39092712474618" text-anchor="end" transform="translate(0,0) rotate(-45 254.39092712474618 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">06:00-06:59</text><text x="284.0159271247462" text-anchor="end" transform="translate(0,0) rotate(-45 284.0159271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">07:00-07:59</text><text x="313.6409271247462" text-anchor="end" transform="translate(0,0) rotate(-45 313.6409271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">08:00-08:59</text><text x="343.2659271247462" text-anchor="end" transform="translate(0,0) rotate(-45 343.2659271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">09:00-09:59</text><text x="372.8909271247462" text-anchor="end" transform="translate(0,0) rotate(-45 372.8909271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">10:00-10:59</text><text x="402.5159271247462" text-anchor="end" transform="translate(0,0) rotate(-45 402.5159271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">11:00-11:59</text><text x="432.1409271247462" text-anchor="end" transform="translate(0,0) rotate(-45 432.1409271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">12:00-12:59</text><text x="461.7659271247462" text-anchor="end" transform="translate(0,0) rotate(-45 461.7659271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">13:00-13:59</text><text x="491.3909271247462" text-anchor="end" transform="translate(0,0) rotate(-45 491.3909271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">14:00-14:59</text><text x="521.0159271247462" text-anchor="end" transform="translate(0,0) rotate(-45 521.0159271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">15:00-15:59</text><text x="550.6409271247462" text-anchor="end" transform="translate(0,0) rotate(-45 550.6409271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">16:00-16:59</text><text x="580.2659271247462" text-anchor="end" transform="translate(0,0) rotate(-45 580.2659271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">17:00-17:59</text><text x="609.8909271247462" text-anchor="end" transform="translate(0,0) rotate(-45 609.8909271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">18:00-18:59</text><text x="639.5159271247462" text-anchor="end" transform="translate(0,0) rotate(-45 639.5159271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">19:00-19:59</text><text x="669.1409271247462" text-anchor="end" transform="translate(0,0) rotate(-45 669.1409271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">20:00-20:59</text><text x="698.7659271247462" text-anchor="end" transform="translate(0,0) rotate(-45 698.7659271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">21:00-21:59</text><text x="728.3909271247462" text-anchor="end" transform="translate(0,0) rotate(-45 728.3909271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">22:00-22:59</text><text x="758.0159271247462" text-anchor="end" transform="translate(0,0) rotate(-45 758.0159271247462 220)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="220" opacity="1">23:00-23:59</text></g><g class="highcharts-axis-labels highcharts-yaxis-labels" data-z-index="7"><text x="44" text-anchor="end" transform="translate(0,0)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="201" opacity="1">0</text><text x="44" text-anchor="end" transform="translate(0,0)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="136" opacity="1">1</text><text x="44" text-anchor="end" transform="translate(0,0)" style="color: rgb(51, 51, 51); cursor: default; font-size: 0.8em; fill: rgb(51, 51, 51);" y="72" opacity="1">2</text></g><text x="770" class="highcharts-credits" text-anchor="end" data-z-index="8" text-align="right" y="345" style="cursor: pointer; color: rgb(153, 153, 153); font-size: 0.6em; fill: rgb(153, 153, 153);">Highcharts.com</text></svg></div></div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>    
+</div>

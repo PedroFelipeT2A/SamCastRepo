@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Gerenciar Agendamentos Relay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Painel.Models.AgendamentoRelay.AgendamentoRelayViewModel>
+
+<div class="content flex-row-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 2rem; color: #ff940a">
+                            <strong>Gerenciamento de Agendamentos de Relay</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <form method="post" asp-action="CadastrarAgendamento" enctype="multipart/form-data">
+                        <div class="row">
+                            <!-- Campo para Servidor Relay -->
+                            <div class="col-md-6 mb-3">
+                                <label for="ServidorRelay" class="form-label text-muted">Servidor Relay (m3u8)</label>
+                                <input class="form-control border-primary" type="text" id="ServidorRelay" name="ServidorRelay" required />
+                            </div>
+
+                            <!-- Campo para Frequência -->
+                            <div class="col-md-6 mb-3">
+                                <label for="Frequencia" class="form-label text-muted">Frequência</label>
+                                <input class="form-control border-primary" type="number" id="Frequencia" name="Frequencia" value="1" required />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <!-- Campo para Data -->
+                            <div class="col-md-6 mb-3">
+                                <label for="Data" class="form-label text-muted">Data</label>
+                                <input class="form-control border-primary" type="date" id="Data" name="Data" required />
+                            </div>
+
+                            <!-- Campo para Hora -->
+                            <div class="col-md-3 mb-3">
+                                <label for="Hora" class="form-label text-muted">Hora</label>
+                                <input class="form-control border-primary" type="text" id="Hora" name="Hora" maxlength="2" required />
+                            </div>
+
+                            <!-- Campo para Minuto -->
+                            <div class="col-md-3 mb-3">
+                                <label for="Minuto" class="form-label text-muted">Minuto</label>
+                                <input class="form-control border-primary" type="text" id="Minuto" name="Minuto" maxlength="2" required />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <!-- Campo para Dias -->
+                            <div class="col-md-6 mb-3">
+                                <label for="Dias" class="form-label text-muted">Dias</label>
+                                <input class="form-control border-primary" type="text" id="Dias" name="Dias" required />
+                            </div>
+
+                            <!-- Campo para Duração -->
+                            <div class="col-md-6 mb-3">
+                                <label for="Duracao" class="form-label text-muted">Duração</label>
+                                <input class="form-control border-primary" type="text" id="Duracao" name="Duracao" required />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <!-- Campo para Status -->
+                            <div class="col-md-6 mb-3">
+                                <label for="Status" class="form-label text-muted">Status</label>
+                                <select class="form-select border-primary" id="Status" name="Status" required>
+                                    <option value="0">Inativo</option>
+                                    <option value="1">Ativo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Botão para salvar o agendamento -->
+                        <div class="row mt-4">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary w-100">Cadastrar Agendamento</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Exibição de mensagem de sucesso após a ação -->
+                    @if (TempData["StatusAcao"] != null)
+                    {
+                        <div class="alert alert-success mt-4">
+                            @Html.Raw(TempData["StatusAcao"])
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Tabela de Agendamentos Existentes -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Agendamentos Existentes</h5>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Servidor Relay</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Status</th>
+                                    <th>Duração</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var agendamento in Model)
+                                {
+                                    <tr>
+                                        <td>@agendamento.ServidorRelay</td>
+                                        <td>@agendamento.Data.ToString("dd/MM/yyyy")</td>
+                                        <td>@agendamento.Hora:@agendamento.Minuto</td>
+                                        <td>@(agendamento.Status == 1 ? "Ativo" : "Inativo")</td>
+                                        <td>@agendamento.Duracao</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p class="text-muted">Nenhum agendamento encontrado.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

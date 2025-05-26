@@ -1,0 +1,94 @@
+﻿@model Painel.Models.GerenciadorPlaylistsViewModel
+
+@{
+    ViewData["Title"] = "Gerenciador de Playlists";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-list fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>Gerenciador de Playlists</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="mb-3">
+                        <button class="btn btn-success" onclick="criarPlaylist('@Model.LoginCode')">
+                            <i class="fa fa-plus"></i> Criar Nova Playlist
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Vídeos</th>
+                                    <th>Agendamentos</th>
+                                    <th>Duração</th>
+                                    <th>Comerciais</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var playlist in Model.Playlists)
+                                {
+                                    <tr>
+                                        <td>@playlist.Nome</td>
+                                        <td>@playlist.TotalVideos</td>
+                                        <td>@playlist.TotalAgendamentos</td>
+                                        <td>@playlist.DuracaoFormatada</td>
+                                        <td>@(playlist.Comerciais ? "Sim" : "Não")</td>
+                                        <td>
+                                            <select class="form-select" onchange="executarAcaoPlaylist('@playlist.Code', this.value)">
+                                                <option value="">Selecionar Ação</option>
+                                                <optgroup label="Playlist">
+                                                    <option value="iniciar">Iniciar</option>
+                                                    <option value="gerenciar">Gerenciar</option>
+                                                    <option value="gerenciar-basico">Gerenciar Básico</option>
+                                                    <option value="duplicar">Duplicar</option>
+                                                    <option value="remover">Remover</option>
+                                                </optgroup>
+                                                <optgroup label="Comerciais">
+                                                    <option value="comerciais-configurar">Configurar Comerciais</option>
+                                                    <option value="comerciais-remover">Remover Comerciais</option>
+                                                </optgroup>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @if (!Model.Playlists.Any())
+                        {
+                            <div class="alert alert-warning mt-3 text-center">Nenhuma playlist encontrada.</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<script>
+    function criarPlaylist(loginCode) {
+        // lógica JS para criar playlist (como no PHP antigo)
+        console.log("Criar playlist com login:", loginCode);
+    }
+
+    function executarAcaoPlaylist(code, acao) {
+        if (!acao) return;
+        // lógica de chamada backend para a ação
+        console.log("Executando", acao, "em", code);
+    }
+</script>

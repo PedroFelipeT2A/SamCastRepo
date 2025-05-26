@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Renomear Vídeos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-edit fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>🎬 Renomear Vídeos</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    @if (ViewData["StatusAcao"] != null)
+                    {
+                        <div class="alert alert-info">
+                            @ViewData["StatusAcao"]
+                        </div>
+                    }
+
+                    <form method="post" asp-action="RenomearVideos">
+                        <div class="mb-3">
+                            <label for="playlistSelect" class="form-label text-muted">Selecione a Playlist</label>
+                            <select class="form-select border-primary" id="playlistSelect" name="PlaylistSelecionada">
+                                <option value="playlist1">Playlist Manhã</option>
+                                <option value="playlist2">Playlist Noite</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-primary w-100">Renomear Vídeos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

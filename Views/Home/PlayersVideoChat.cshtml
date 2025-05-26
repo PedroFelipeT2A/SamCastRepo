@@ -1,0 +1,102 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-play"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Players </b>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-12">                        
+                        <select name="players" class="form-select" id="players" style="width:98%;" onchange="ManagePlayer(this.value);">
+                            <option value="">Escolha outro Player para Gerenciar </option>
+                            <option value="html5">Flash &amp; HTML5 Responsivo(NOVO)</option>
+                            <option value="link-celulares">Link Celulares</option>
+                            <option value="android">App Android</option>
+                            <option value="video-chat">Video Responsivo com Chat</option>
+                            <option value="video-ads">Video Ads(anúncios)</option>
+                            <option value="m3u8">Player Próprio / Link M3U8</option>
+                        </select>                        
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12" style="text-align:center">
+                            <h5><b> Vídeo com Chat </b></h5>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!-- -->
+
+                            <form action="/gerenciar-player-video-chat" method="post">
+                                <table width="870" border="0" align="center" class="table table-responsive" >
+                                    <tbody>
+                                        <tr>
+                                            <td width="150" height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">URL Capa/Poster</td>
+                                            <td width="720" align="left" class="texto_padrao_pequeno"><input class="form-control" type="text" name="capa"  value="http://">&nbsp;<i class="fa fa-globe-americas"  onclick="alert('(mesma largura X altura do player)');" style="cursor:pointer"></i></td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Auto Play</td>
+                                            <td align="left">
+                                                <input class="form-check-inline" name="autoplay" type="checkbox" value="true" style="vertical-align:middle">
+                                                &nbsp;Sim
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Iniciar Mudo</td>
+                                            <td align="left" class="texto_padrao_pequeno">
+                                                <input class="form-check-inline" name="mudo" type="checkbox" value="true" style="vertical-align:middle">
+                                                &nbsp;Sim&nbsp;<small>(use para funcionar o auto play)</small>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="30" align="left" class="texto_padrao_destaque" style="padding-left:5px;">Exibir Contador</td>
+                                            <td align="left">
+                                                <input class="form-check-inline" name="contador" type="checkbox" value="sim" style="vertical-align:middle">
+                                                &nbsp;Sim
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><input class="btn btn-primary" style="width:100%" type="submit" class="botao" value="OK"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <!-- -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+<script>
+    function ManagePlayer(player) {
+        if (player == 'html5') { window.location.href = '/Home/PlayersHTML5'; }
+        if (player == 'link-celulares') { window.location.href = '/Home/PlayersLinkCelulares'; }
+        if (player == 'android') { window.location.href = '/Home/PlayersAndroid'; }
+        if (player == 'video-chat') { window.location.href = '/Home/PlayersVideoChat'; }
+        if (player == 'video-ads') { window.location.href = '/Home/PlayersVideoAds'; }
+        if (player == 'm3u8') { window.location.href = '/Home/PlayersM3u8'; }
+    }
+</script>

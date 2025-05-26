@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Painel.Models.LiveResumoViewModel>
+
+@{
+    ViewData["Title"] = "Gerenciar Lives";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-video fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>Gerenciar Lives</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="mb-3">
+                        <button class="btn btn-success" onclick="criarLive()">
+                            <i class="fa fa-plus"></i> Criar Nova Live
+                        </button>
+                    </div>
+
+                    <!-- Formulário para criar live -->
+                    <form method="POST" id="formLive">
+                        <div class="mb-3">
+                            <label for="servidor_rtmp" class="form-label">Servidor RTMP</label>
+                            <input type="text" class="form-control" id="servidor_rtmp" name="servidor_rtmp" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="servidor_rtmp_chave" class="form-label">Chave do Servidor RTMP</label>
+                            <input type="text" class="form-control" id="servidor_rtmp_chave" name="servidor_rtmp_chave" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="data_inicio" class="form-label">Data de Início</label>
+                            <input type="text" class="form-control" id="data_inicio" name="data_inicio" placeholder="dd/mm/yyyy HH:MM" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="data_fim" class="form-label">Data de Fim</label>
+                            <input type="text" class="form-control" id="data_fim" name="data_fim" placeholder="dd/mm/yyyy HH:MM" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo de Live</label>
+                            <select class="form-select" id="tipo" name="tipo" required>
+                                <option value="publica">Pública</option>
+                                <option value="privada">Privada</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="inicio_imediato" name="inicio_imediato" value="sim" />
+                            <label class="form-check-label" for="inicio_imediato">Iniciar Imediatamente</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+
+                    <!-- Lista de Lives -->
+                    <div class="table-responsive mt-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Data Início</th>
+                                    <th>Duração</th>
+                                    <th>Tipo</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var live in Model)
+                                {
+                                    <tr>
+                                        <td>@live.Nome</td>
+                                        <td>@live.DataHora</td>
+                                        <td>@live.DuracaoFormatada</td>
+                                        <td>@live.Tipo</td>
+                                        <td>@(live.Status ? "Ativa" : "Inativa")</td>
+                                        <td>
+                                            <select class="form-select" onchange="executarAcaoLive('@live.Code', this.value)">
+                                                <option value="">Selecionar Ação</option>
+                                                <option value="iniciar">Iniciar</option>
+                                                <option value="finalizar">Finalizar</option>
+                                                <option value="remover">Remover</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        @if (!Model.Any())
+                        {
+                            <div class="alert alert-warning mt-3 text-center">Nenhuma live encontrada.</div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<script>
+    function criarLive() {
+        console.log("Criar nova live");
+    }
+
+    function executarAcaoLive(code, acao) {
+        if (!acao) return;
+        console.log("Executando", acao, "na live", code);
+    }
+</script>

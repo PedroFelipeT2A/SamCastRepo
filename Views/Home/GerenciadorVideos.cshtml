@@ -1,0 +1,75 @@
+﻿@model Painel.Models.GerenciadorViewModel
+
+@{
+    ViewData["Title"] = "Gerenciador de Vídeos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4" style="color: #ff940a;">Gerenciador de Vídeos</h1>
+
+    <!-- Exibe mensagem, espaço usado e total, se necessário -->
+    <div class="alert alert-info" style="background-color: #f1f1f1; color: #ff940a;">
+        <strong>@Model.Mensagem</strong> | Espaço usado: @Model.EspacoUsado / @Model.EspacoTotal
+    </div>
+
+    <div class="mb-4">
+        <h5 style="color: #ff940a;">Enviar Novo Vídeo</h5>
+        <form method="post" enctype="multipart/form-data" asp-action="EnviarVideo">
+            <div class="form-group">
+                <label for="PastaId" style="color: #ff940a;">Selecione uma Pasta</label>
+                <select class="form-control" id="PastaId" name="pastaId">
+                    @foreach (var pasta in Model.Pastas)
+                    {
+                        <option value="@pasta.Id">@pasta.Nome</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="videoFile" style="color: #ff940a;">Selecione um Vídeo</label>
+                <input type="file" class="form-control" id="videoFile" name="videoFile" accept="video/*" required />
+            </div>
+            <button type="submit" class="btn" style="background-color: #ff940a; color: white;">Enviar Vídeo</button>
+        </form>
+    </div>
+
+    @foreach (var pasta in Model.Pastas)
+    {
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="card-title" style="color: #ff940a;">@pasta.Nome</h5>
+                <form method="post" asp-action="ExcluirPasta" asp-route-id="@pasta.Id" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Excluir Pasta</button>
+                </form>
+            </div>
+            <div class="card-body">
+                <!-- Exibe os vídeos da pasta -->
+                <div class="row">
+                    @foreach (var video in Model.Videos.Where(v => v.PastaId == pasta.Id))
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <video class="card-img-top" controls>
+                                    <source src="@video.Caminho" type="video/mp4" />
+                                    Seu navegador não suporta vídeo.
+                                </video>
+                                <div class="card-body">
+                                    <h5 class="card-title" style="color: #ff940a;">@video.Nome</h5>
+                                    <form method="post" asp-action="ExcluirVideo" asp-route-id="@video.Id" style="display:inline;">
+                                        <button type="submit" class="btn btn-danger btn-sm">Excluir Vídeo</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Caso não haja vídeos na pasta -->
+                @if (!Model.Videos.Any(v => v.PastaId == pasta.Id))
+                {
+                    <div class="alert alert-warning" style="background-color: #f1f1f1; color: #ff940a;">Nenhum vídeo disponível nesta pasta.</div>
+                }
+            </div>
+        </div>
+    }
+</div>

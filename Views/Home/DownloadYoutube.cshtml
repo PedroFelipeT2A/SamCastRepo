@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Configuração do Streaming";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-cogs fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>⚙️ Configuração do Streaming</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    @if (TempData["StatusAcao"] != null)
+                    {
+                        <div class="alert alert-info">
+                            @Html.Raw(TempData["StatusAcao"])
+                        </div>
+                    }
+
+                    <!-- Exemplo de informações carregadas do servidor -->
+                    <div class="mb-4">
+                        <label class="form-label text-muted">Servidor Associado</label>
+                        <input type="text" class="form-control border-primary" value="@Model.Servidor.Nome" readonly />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-muted">Login de Acesso</label>
+                        <input type="text" class="form-control border-primary" value="@Model.Streaming.Login" readonly />
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label text-muted">Configurações do Sistema</label>
+                        <textarea class="form-control border-primary" rows="5" readonly>@Model.ConfiguracoesJson</textarea>
+                    </div>
+
+                    <!-- Aqui pode adicionar botões de ação futura se desejar -->
+                    <div class="d-grid">
+                        <a href="/Painel/EditarStreaming" class="btn btn-primary">Editar Configurações</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

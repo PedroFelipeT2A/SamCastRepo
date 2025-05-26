@@ -1,0 +1,87 @@
+﻿@model List<Painel.Models.EditarAgendamentoModel.AgendamentoResumoViewModel>
+
+@{
+    ViewData["Title"] = "Editar Agendamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Definindo o layout para seguir o padrão global
+}
+
+<!-- Pikaday CSS -->
+<link href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css" rel="stylesheet" />
+
+<div class="content flex-row-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <i class="fa fa-calendar-alt fa-2x"></i>
+                        </div>
+                        <div class="text-end" style="font-size: 3vh; color: #ff940a">
+                            <strong>🎬 Editar Agendamento de Playlist</strong>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <form method="post" class="bg-white p-4 rounded shadow-sm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Campo de Data com Calendário -->
+                                <label for="calendarInput" class="form-label fs-4 text-muted">Selecione a Data</label>
+                                <input type="text" id="calendarInput" class="form-control border-primary" placeholder="Escolha uma data" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label text-muted">Frequência</label>
+                                    <select class="form-select">
+                                        <option>Executar em uma data específica</option>
+                                        <option>Executar diariamente</option>
+                                        <option>Executar em dias da semana</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-muted">Horário Agendado</label>
+                                    <input type="time" class="form-control border-primary" value="08:00" />
+                                </div>
+                                <!-- Novo campo de Seleção de Playlist -->
+                                <div class="mb-3">
+                                    <label class="form-label text-muted">Selecione a Playlist</label>
+                                    <select class="form-select">
+                                        <option selected>Playlist Manhã</option>
+                                        <option>Playlist Noite</option>
+                                        <!-- Aqui você pode adicionar outras opções de playlists disponíveis -->
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Salvar Agendamento</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<!-- Pikaday JS -->
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+<script>
+    // Inicializando o Pikaday (Calendário)
+    document.addEventListener('DOMContentLoaded', function () {
+        var picker = new Pikaday({
+            field: document.getElementById('calendarInput'), // Campo de entrada
+            format: 'DD/MM/YYYY', // Formato da data
+            minDate: new Date(),  // Data mínima (hoje)
+            firstDay: 1,          // Semana começa na segunda-feira
+            i18n: {               // Configurações de idioma
+                previousMonth: 'Mês Anterior',
+                nextMonth: 'Próximo Mês',
+                months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                weekdays: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+            }
+        });
+    });
+</script>

@@ -1,0 +1,71 @@
+﻿@{
+    revendas revenda = Newtonsoft.Json.JsonConvert.DeserializeObject<revendas>(Context.Session.GetString("revenda"));
+    configuracoes configuracao = Newtonsoft.Json.JsonConvert.DeserializeObject<configuracoes>(Context.Session.GetString("configuracao"));
+    streamings streaming = Newtonsoft.Json.JsonConvert.DeserializeObject<streamings>(Context.Session.GetString("streaming"));
+    servidores servidor = Newtonsoft.Json.JsonConvert.DeserializeObject<servidores>(Context.Session.GetString("servidor"));
+    
+    string servidorFms = "rtmp://" + servidor.nome + ".udicast.com:1935/" + streaming.login;
+    string servidorFtp = servidor.nome + ".udicast.com";
+    string stream = streaming.aplicacao == "tvstation" ? "live" : streaming.login;
+}
+<div class="content flex-row-fluid">
+    <div class="row ">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <div style="height:6vh; padding-right:2vh">
+                        <div style="float:left">
+                            <span class="fa fa-2x fa-fast-forward"></span>
+                        </div>
+                        <div style="float: right; font-size: 3vh; color: #ff940a">
+                            <b> Configurações </b>
+                        </div>
+                    </div>
+                    <hr />
+
+                    <div class="row">
+                        <span class="title-text"> <b> SENHAS </b> </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Senha de FTP </div>
+                        <div class="col-9"> <input type="password" class="form-control" value="12345678" /></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Senha de Transmissão </div>
+                        <div class="col-9"> <input type="password" class="form-control" value="12345678" /></div>
+                    </div>                    
+
+                    <hr />
+
+                    <div class="row">
+                        <span class="title-text"> <b> Fuso Horário e Datas </b> </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Fuso Horário </div>
+                        <div class="col-9"> 
+                            <select class="form-control">
+                                <option value="America/Argentina/Buenos_Aires"> America/Brasil/Maceió </option>
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3"> Formato da Data </div>
+                        <div class="col-9">
+                            <select class="form-control">
+                                <option value="dd/mm/yyyy"> dd/mm/yyyy </option>
+                                <option value="mm/dd/yyyy"> mm/dd/yyyy </option>
+                                <option value="yyyy-mm-dd"> yyyy-mm-dd </option>
+                            </select>
+                        </div>
+                    </div>                   
+                    <br/>
+                    <div class="row">
+                        <div class="col-12" style="text-align:center"> <button class="btn btn-primary"> <i class="fa fa-check"></i> Alterar Configurações </button> </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
